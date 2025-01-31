@@ -106,12 +106,12 @@ void SoundLevelMeter::task(void *param) {
       this_->on_cv_.wait(lock, [this_] { return this_->is_on_; });
     }
     if (this_->i2s_->read_samples(buffer)) {
-      process_start = esp_timer_get_time();
+      process_start = timer_gettime();
 
       for (auto *g : this_->groups_)
         g->process(buffer);
 
-      process_time += esp_timer_get_time() - process_start;
+      process_time += timer_gettime() - process_start;
       process_count += buffer.size();
 
       auto sr = this_->get_sample_rate();
