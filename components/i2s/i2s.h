@@ -44,7 +44,7 @@ class I2SComponent : public Component {
   InternalGPIOPin *din_pin_{nullptr};
   InternalGPIOPin *dout_pin_{nullptr};
 
-  unsigned int sample_rate_{48000};
+  uint32_t sample_rate_{48000};
   uint8_t bits_per_sample_{32};
   uint8_t port_num_{0};
   int dma_buf_count_{8};
